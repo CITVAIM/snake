@@ -126,9 +126,10 @@
     var nx = head.x + dir.x;
     var ny = head.y + dir.y;
 
-    if (nx < 0 || ny < 0 || nx >= GRID || ny >= GRID) {
-      return gameOver();
-    }
+    if (nx < 0) nx = GRID - 1;
+    if (nx >= GRID) nx = 0;
+    if (ny < 0) ny = GRID - 1;
+    if (ny >= GRID) ny = 0;
 
     var eating = food && nx === food.x && ny === food.y;
     var body = eating ? snake : snake.slice(0, snake.length - 1);
